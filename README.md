@@ -1,4 +1,4 @@
-# javafbp-compattrs
+# javafbp-compattrs (under construction)
 
 Function to build FBP-oriented Javadoc for FBP components
 
