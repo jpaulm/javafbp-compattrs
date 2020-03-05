@@ -1,14 +1,31 @@
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+*-fulltrace.txt
+output
+temp.data
+
+# Gradle
 .gradle
-/build/
 
-# Ignore Gradle GUI config
-gradle-app.setting
+# Maven packages/etc
+target/
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
 
-# Cache of project
-.gradletasknamecache
+build/tmp
+build/resources
+build/classes
+build/dependency-cache
+build/ivy.xml
 
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+# Eclipse project
+bin
+
+# IDEA project
+.idea/
+*.iml
+
+# System's crap
+Thumbs.db
+.DS_Store
+

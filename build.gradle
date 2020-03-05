@@ -51,7 +51,7 @@ compileJava.options.encoding = 'UTF-8'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-mainClassName = 'com.jpaulmorrison.fbp.core.engine.JavaFBPCompAttrs  
+mainClassName = 'com.jpaulmorrison.core.engine.JavaFBPCompAttrs'  
 
 nexusStaging {  
     username = ossrhUser
@@ -62,17 +62,6 @@ nexusStaging {
 repositories {
     mavenCentral()
 }
-
- 
-//sourceSets {
-//   main {
-//       java {            
-//            exclude 'src/main/java/com/jpaulmorrison/fbp/doclets/*.*'
-//            exclude '**/doclets/**'
-  //      }
- //   }
- //}
-
 
 dependencies { 	
 	implementation files('src/dist/lib/tools.jar')
@@ -112,6 +101,7 @@ jar {
     exclude('com/sun/tools/classfile/**')
     exclude('com/sun/tools/corba/**')
     exclude('com/sun/xml/**')
+    exclude('tools/**')
      
 }
 
@@ -129,7 +119,7 @@ ext {
     releasePublicationRepository = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
 
 
-//mainClassName = 'com.jpaulmorrison.fbp.core.engine.Network'
+mainClassName = 'com.jpaulmorrison.fbp.core.engine.Network'
 ossrhUser =  project.hasProperty('ossrhUser') ? project.property('ossrhUser') : ""
 osshrPassword = project.hasProperty('osshrPassword') ? project.property('osshrPassword') : ""
 
@@ -163,25 +153,21 @@ description = "Create default maven directory structure"
            
                   
             pom {
-                name = 'JavaFBPCompAttrs'
+                name = 'JavaFBP-CompAttrs'
                 description = 'Java implementation of Flow-Based Programming'
                  // groupId 'com.jpaulmorrison'
                  packaging 'jar'
          
-               url = 'https://github.com/jpaulm/javafbpcompattrs'
+               url = 'https://github.com/jpaulm/javafbp-compattrs'
                
                
            
                 
                 licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        license {
+                        name = 'Clarified Artistic License'
+                        url = 'https://spdx.org/licenses/ClArtistic.html'
                     }
-                    license {
-                        name = 'GNU Lesser General Public License, Version 3.0'
-                       url = 'https://www.gnu.org/licenses/lgpl-3.0.txt'
-                     }
                 }
                 
           developers {
@@ -232,7 +218,7 @@ description = "Create default maven directory structure"
 signing {
     required {
         // signing is required if this is a release version and the artifacts are to be published
-        !archiveVersion.toString().endsWith('-SNAPSHOT') && tasks.withType(PublishToMavenRepository).find {
+        !version.toString().endsWith('-SNAPSHOT') && tasks.withType(PublishToMavenRepository).find {
              gradle.taskGraph.hasTask it
         }
     }
