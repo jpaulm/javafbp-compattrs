@@ -3,8 +3,8 @@ package com.jpaulmorrison.doclets;
 import java.io.File;
 
 /**
- * Has no main method - must be run under javadoc command - see 
- *   javafbpcompattrs.bat at javafbp root ...
+ * Main method is jist for debugging - this is normally run under javadoc command - see 
+ *   javafbpcompattrs.bat in `dist` folder ...
  */
 
 import java.io.FileNotFoundException;
@@ -38,7 +38,8 @@ public class JavaFBPCompAttrs {
 		}	
 		
 		ClassDoc[] classes = root.classes();
-		//System.out.println("Count: " + classes.length);
+		System.out.println("Count: " + classes.length);
+		System.out.println(classes);
 		writer.println("<html> <body><h1>JavaFBP Component Attributes</h1> <p>");
 		AnnotationDescImpl adi;
 		String className = "";
@@ -51,11 +52,13 @@ public class JavaFBPCompAttrs {
 			}
 			
 			writer.println("<h3>" + classes[i].toString().substring(v + 1) + "</h3><p>");
+			System.out.println(classes[i]);
 			
 			AnnotationDesc[] anns = classes[i].annotations();
 			
 			for (int j = 0; j < anns.length; ++j) {
 				adi = (AnnotationDescImpl) anns[j];
+				//System.out.println(className + " " + adi);
 				String s = adi.annotationType().toString();
 				
 				if (!(s.endsWith("InPorts") || s.endsWith("OutPorts"))) {	
@@ -86,18 +89,31 @@ public class JavaFBPCompAttrs {
 	static void dispADI(AnnotationDescImpl adi, String s, PrintWriter w) {
 
 		String t = s.substring(s.lastIndexOf(".") + 1);
-		w.println("</p><h4>" + t +"</h4><p> ");
+		//w.println("</p><h4>" + t +"</h4><p> ");
+		t = t.trim();
+		
+		String port = "<p><b>" + t + "</b> ";
 		AnnotationDesc.ElementValuePair[] vp = adi.elementValues();
+		
+		if (vp.length > 0)
+			port += "<b>: </b>";
 
 		for (int k = 0; k < vp.length; ++k) {
+			if (k > 0)
+				port += ", ";
 			t = vp[k].element().toString();
 			t = t.substring(s.length() + 1); // element() with annotationType
 												// stripped off
 			t = t.substring(0, t.lastIndexOf("()")); // strip off ()
 			if (t.equals("value")) 
-				w.println("</p><p>" + vp[k].value());
+				//w.println("</p><p>" + vp[k].value());
+				port += vp[k].value();
 			else
-				w.println("</p><p>" + t + " - " + vp[k].value());
+				//w.println("</p><p>" + t + " - " + vp[k].value());
+				port += t + " - " + vp[k].value();
 		}
+		w.println(port + "</p>");
 	}
+
+	
 }
