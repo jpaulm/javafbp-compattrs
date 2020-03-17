@@ -1,6 +1,6 @@
 # javafbp-compattrs
 
-Function to build FBP-oriented Javadoc for JavaFBP components (JavaFBP is [Java implementation of Flow-Based Programming](https://github.com/jpaulm/javafbp)
+Function to build Flow-Based-Programming-oriented Javadoc for JavaFBP components (JavaFBP is [Java implementation of Flow-Based Programming](https://github.com/jpaulm/javafbp) ).
 
 The standard Javadoc output is not very helpful for people looking to use JavaFBP components - hopefully this will result in a more informative display...!
 
