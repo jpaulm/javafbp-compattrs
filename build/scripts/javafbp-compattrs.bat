@@ -84,6 +84,7 @@ set CMD_LINE_ARGS=%*
 
 set CLASSPATH=%APP_HOME%\lib\javafbp-compattrs-1.0.1.jar;%APP_HOME%\lib\tools.jar
 
+
 @rem Execute javafbp-compattrs
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %JAVAFBP_COMPATTRS_OPTS%  -classpath "%CLASSPATH%" com.jpaulmorrison.core.engine.JavaFBPCompAttrs %CMD_LINE_ARGS%
 
