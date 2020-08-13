@@ -84,10 +84,10 @@ java {
 jar {
     archiveVersion = '1.0.1'
     manifest {
-       attributes 'Implementation-Title': 'JavaFBP-CompAttrs', 'Implementation-Version': archiveVersion,
-             
-        "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' '),       
-         'Main-Class' : mainClassName
+       attributes ( 'Implementation-Title': 'JavaFBP-CompAttrs', 
+       'Implementation-Version': project.version,             
+        'Class-Path': configurations.compileClasspath.collect { it.getName() }.join(' '),       
+         'Main-Class' : mainClassName)
     }
       
        
