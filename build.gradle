@@ -2,12 +2,6 @@
 
 // Not currently on Maven - but build.gradle copied from my other repos - I just don't do 'publish'
 
-//When rebuilding JavaFBP-CompAttrs, use parameter 
-//   -Dorg.gradle.internal.publish.checksums.insecure=true
-// or add systemProp.org.gradle.internal.publish.checksums.insecure=true to gradle.properties
-// until this problem is fixed - see https://github.com/gradle/gradle/issues/11308
-
-
 
 buildscript {  
     repositories {
@@ -45,7 +39,7 @@ apply plugin: 'java-library'
    
 }
 
-version = '1.0.1'
+version = '1.0.2'
 
 group = 'com.jpaulmorrison'
 
@@ -82,7 +76,7 @@ java {
 
 
 jar {
-    archiveVersion = '1.0.1'
+    //archiveVersion = '1.0.2'
     manifest {
        attributes ( 'Implementation-Title': 'JavaFBP-CompAttrs', 
        'Implementation-Version': project.version,             
@@ -155,7 +149,7 @@ description = "Create default maven directory structure"
         
             groupId = 'com.jpaulmorrison'
             artifactId = 'javafbp'       
-            version = '1.0.1'
+            version = '1.0.2'
            
             from components.java
            

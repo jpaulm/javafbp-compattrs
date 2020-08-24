@@ -82,7 +82,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\javafbp-compattrs-1.0.1.jar;%APP_HOME%\lib\tools.jar
+set CLASSPATH=%APP_HOME%\lib\javafbp-compattrs-1.0.2.jar;%APP_HOME%\lib\tools.jar
 
 
 @rem Execute javafbp-compattrs

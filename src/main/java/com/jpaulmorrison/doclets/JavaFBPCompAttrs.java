@@ -23,6 +23,7 @@ public class JavaFBPCompAttrs {
 		PrintWriter writer = null;
 		String user = System.getProperty("user.home");
 		String fn = user + "/temp";
+		int level = 0;      // can have three values: 0, 1 and 2
 		File file = new File(fn);		
 		file.mkdirs();		
 		try {
@@ -38,8 +39,8 @@ public class JavaFBPCompAttrs {
 		}	
 		
 		ClassDoc[] classes = root.classes();
-		System.out.println("Count: " + classes.length);
-		System.out.println(classes);
+		//System.out.println("Count: " + classes.length);
+		//System.out.println(classes);
 		writer.println("<html> <body><h1>JavaFBP Component Attributes</h1> <p>");
 		AnnotationDescImpl adi;
 		String className = "";
@@ -48,15 +49,30 @@ public class JavaFBPCompAttrs {
 			int v = classes[i].toString().lastIndexOf(".");
 			if (!(className.equals(classes[i].toString().substring(0, v)))) {
 				className = classes[i].toString().substring(0, v);
+				//if (level == 1)  
+				//	writer.println("</ul>");					
+				//if (level == 2)
+					writer.println("</ul></ul>");
 				writer.println("<h2>" + className + "</h2><p>");
+				
+				level = 0;
+				writer.println("<ul>");
+				level ++;
 			}
 			
-			writer.println("<h3>" + classes[i].toString().substring(v + 1) + "</h3><p>");
-			System.out.println(classes[i]);
+			writer.println("<li>" + "<b>" +  classes[i].toString().substring(v + 1) + "</b>");
+			//if (level == 2)	{			
+			//	writer.println("</ul>");
+			//	level --;
+			//}
+			writer.println("<ul>");
+			level ++;
+			//System.out.println(classes[i]);
 			
 			AnnotationDesc[] anns = classes[i].annotations();
 			
 			for (int j = 0; j < anns.length; ++j) {
+				writer.println("<li>"); 
 				adi = (AnnotationDescImpl) anns[j];
 				//System.out.println(className + " " + adi);
 				String s = adi.annotationType().toString();
@@ -78,7 +94,11 @@ public class JavaFBPCompAttrs {
 					}
 				}
 			}
+ 		writer.println("</ul>");
+					 	level --;
 		}
+		writer.println("</ul>");
+	 	level --;
 
 		writer.println("</p></body></html>");
 		writer.close();
@@ -92,7 +112,7 @@ public class JavaFBPCompAttrs {
 		//w.println("</p><h4>" + t +"</h4><p> ");
 		t = t.trim();
 		
-		String port = "<p><b>" + t + "</b> ";
+		String port = "<p><i>" + t + "</i> ";
 		AnnotationDesc.ElementValuePair[] vp = adi.elementValues();
 		
 		if (vp.length > 0)
