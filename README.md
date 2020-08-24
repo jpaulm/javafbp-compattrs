@@ -6,7 +6,7 @@ The standard Javadoc output is not very helpful for people looking to use JavaFB
 
 ## Typical output generated from JavaFBP component source libraries
 
-![Part of JavaFBP component listing](https://github.com/jpaulm/javafbp-compattrs/blob/master/docs/compListPart.png "Part of JavaFBP component listing")
+![Part of JavaFBP component listing](https://github.com/jpaulm/javafbp-compattrs/blob/master/docs/compListPart3.png "Part of JavaFBP component listing")
 
 ## Building Components Attributes List for selected component libraries
 
